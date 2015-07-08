@@ -24,6 +24,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lastNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *firstNameLabel;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *indicatorView;
 @end
 
 @implementation ViewController
@@ -52,12 +54,8 @@
     
 }
 
-- (void)uploadPhotoFrom:(UIImagePickerControllerSourceType)
+- (
 
-- (IBAction)touchedPicture:(id)sender
-{
-    
-}
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     if([textField isEqual:_firstNameTextField])
@@ -112,8 +110,11 @@
             [_profileButton setSelected:NO];
             [_settingsButton setSelected:YES];
         }
+        
+        
     }
 }
+   
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

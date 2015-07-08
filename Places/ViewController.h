@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MobileCoreService/MobileCoreService.h>
+//#import <MobileCoreService/MobileCoreService.h>
 
 @interface ViewController : UIViewController<UITextFieldDelegate>
 
