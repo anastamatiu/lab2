@@ -229,7 +229,7 @@
                     <connections>
                         <outlet property="firstNameLabel" destination="wFo-vx-hGi" id="nf1-p1-aWO"/>
                         <outlet property="firstNameTextField" destination="hlk-OJ-Q1e" id="NNR-IN-iZw"/>
-                        <outlet property="indicatorView" destination="aei-Ya-Jyw" id="D5I-Wi-cpQ"/>
+                        <outlet property="indicatorViewCenter" destination="aei-Ya-Jyw" id="BcO-DS-EYF"/>
                         <outlet property="lastNameLabel" destination="x5Q-dt-Xxr" id="ek7-AM-86A"/>
                         <outlet property="lastNameTextField" destination="qj7-ap-Gen" id="TcG-hk-8d8"/>
                         <outlet property="profileButton" destination="hK1-VS-LI2" id="TJV-F3-4BE"/>
