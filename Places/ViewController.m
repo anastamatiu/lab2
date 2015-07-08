@@ -100,10 +100,7 @@
             [_settingsView setHidden:YES];
             [_profileButton setSelected:YES];
             [_settingsButton setSelected:NO];
-            self.indicatorViewCenter.constant = 0;
-            [UIView animateWithDuration:0.2 animations:^{
-                [ self.view layoutIfNeeded ];
-            }];
+            
             
         }
         else if([sender isEqual:_settingsButton])
@@ -112,16 +109,32 @@
             [_settingsView setHidden:NO];
             [_profileButton setSelected:NO];
             [_settingsButton setSelected:YES];
-            self.indicatorViewCenter.constant = - sender.frame.size.width;
-            [UIView animateWithDuration:0.2 animations:^{
-                [ self.view layoutIfNeeded ];
-            }];
+           
         }
         
-        [ self.view layoutIfNeeded ];
+        [self updateIndicationViewWithDuration:0.2];
     }
 }
-   
+
+-(void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self updateIndicationViewWithDuration:0.0];
+}
+
+-(void) updateIndicationViewWithDuration:(CGFloat)duration {
+    if([_profileButton isSelected])
+    {
+        _indicatorViewCenter.constant = 0;
+    }
+    else
+    {
+        _indicatorViewCenter.constant = - _settingsButton.frame.size.width;
+    }
+    
+    [UIView animateWithDuration:duration animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
