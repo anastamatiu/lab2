@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIView *settingsView;
 
 @property (strong, nonatomic) Profile *profile;
+@property (strong, nonatomic) Settings *settings;
 
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
@@ -34,6 +35,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.profile = [[Profile alloc] init];
+    self.settings = [[Settings alloc] init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(keyboardWillShow:) name: UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+}
+
+bool keyboardIsUp;
+
+- (void) keyboardWillShow:(NSNotification *)note {
+    
+    CGRect frame = self.view.frame;
+    frame.origin.y = -200;
+    [self.view setFrame:frame];
+    
+    NSDictionary *userInfo =note.userInfo;
+    
+    CGRect keyboardFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    keyboardIsUp = YES;
+    
+    keyboardFrame = [self.view convertRect:keyboardFrame fromView:nil];
+    
+    
+}
+
+- (void) keyboardWillHide {
+    CGRect frame = self.view.frame;
+    frame.origin.y = 0;
+    [self.view setFrame:frame];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -55,29 +90,23 @@
     
 }
 
+- (void)closeKeyboard
+{
+    [self.view endEditing:YES];
+}
+
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     if([textField isEqual:_firstNameTextField])
     {
-        if([textField.text length] > 0)
-            self.profile.firstName = textField.text;
-        else
-        {
-            _firstNameLabel.textColor = [UIColor redColor];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No first name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-            [alert show];
-        }
+        self.profile.firstName = textField.text;
     }
     else
     {
         if([ textField.text length] > 0)
             self.profile.lastName = textField.text;
-        else
-        {
-            _lastNameLabel.textColor = [UIColor redColor];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No last name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-            [alert show];
-        }
     }
+
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -86,7 +115,16 @@
         [_lastNameTextField becomeFirstResponder];
     }
     else
+    {
+        if([ textField.text length] == 0)
+        {
+            _lastNameLabel.textColor = [UIColor redColor];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"No last name" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+            [alert show];
+
+        }
         [_lastNameTextField resignFirstResponder];
+    }
     
     return YES;
 }
