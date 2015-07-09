@@ -37,9 +37,9 @@
     self.profile = [[Profile alloc] init];
     self.settings = [[Settings alloc] init];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(keyboardWillShow:) name: UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector: @selector(keyboardWillShow:) name: UIKeyboardWillShowNotification object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
+ //   [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeKeyboard)];
     

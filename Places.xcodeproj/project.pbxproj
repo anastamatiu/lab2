@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C35246C9713A56D234CE807 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D32F6FAEC091E4530A081962 /* libPods.a */; };
 		8E454CCA1B4BC6C500A3B4F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E454CC91B4BC6C500A3B4F8 /* main.m */; };
 		8E454CCD1B4BC6C500A3B4F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E454CCC1B4BC6C500A3B4F8 /* AppDelegate.m */; };
 		8E454CD01B4BC6C500A3B4F8 /* Places.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E454CCE1B4BC6C500A3B4F8 /* Places.xcdatamodeld */; };
@@ -17,6 +18,8 @@
 		8E454CE71B4BC6C600A3B4F8 /* PlacesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E454CE61B4BC6C600A3B4F8 /* PlacesTests.m */; };
 		8E454CF61B4BCAD000A3B4F8 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E454CF51B4BCAD000A3B4F8 /* Profile.m */; };
 		8E454CF91B4BCCD400A3B4F8 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E454CF81B4BCCD400A3B4F8 /* Settings.m */; };
+		8EE068461B4E70C900E891AD /* NewTabBarControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE068451B4E70C900E891AD /* NewTabBarControler.m */; };
+		8EE068491B4E72DE00E891AD /* PlacesTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE068481B4E72DE00E891AD /* PlacesTableTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		022D777799749547B3AB712F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		48591431872CED701EDB222B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8E454CC41B4BC6C500A3B4F8 /* Places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E454CC81B4BC6C500A3B4F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E454CC91B4BC6C500A3B4F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -48,6 +53,11 @@
 		8E454CF51B4BCAD000A3B4F8 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		8E454CF71B4BCCD400A3B4F8 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		8E454CF81B4BCCD400A3B4F8 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		8EE068441B4E70C900E891AD /* NewTabBarControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTabBarControler.h; sourceTree = "<group>"; };
+		8EE068451B4E70C900E891AD /* NewTabBarControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTabBarControler.m; sourceTree = "<group>"; };
+		8EE068471B4E72DE00E891AD /* PlacesTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesTableTableViewController.h; sourceTree = "<group>"; };
+		8EE068481B4E72DE00E891AD /* PlacesTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesTableTableViewController.m; sourceTree = "<group>"; };
+		D32F6FAEC091E4530A081962 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C35246C9713A56D234CE807 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		608876651709FF35A4D3DD36 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				48591431872CED701EDB222B /* Pods.debug.xcconfig */,
+				022D777799749547B3AB712F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8E454CBB1B4BC6C500A3B4F8 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +97,8 @@
 				8E454CC61B4BC6C500A3B4F8 /* Places */,
 				8E454CE31B4BC6C600A3B4F8 /* PlacesTests */,
 				8E454CC51B4BC6C500A3B4F8 /* Products */,
+				608876651709FF35A4D3DD36 /* Pods */,
+				CA008A00E26FFB2D085A2FD3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,8 +174,20 @@
 			children = (
 				8E454CD21B4BC6C500A3B4F8 /* ViewController.m */,
 				8E454CD11B4BC6C500A3B4F8 /* ViewController.h */,
+				8EE068441B4E70C900E891AD /* NewTabBarControler.h */,
+				8EE068451B4E70C900E891AD /* NewTabBarControler.m */,
+				8EE068471B4E72DE00E891AD /* PlacesTableTableViewController.h */,
+				8EE068481B4E72DE00E891AD /* PlacesTableTableViewController.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		CA008A00E26FFB2D085A2FD3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D32F6FAEC091E4530A081962 /* libPods.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,9 +197,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E454CEA1B4BC6C600A3B4F8 /* Build configuration list for PBXNativeTarget "Places" */;
 			buildPhases = (
+				18F322205DA16B1404C7366C /* Check Pods Manifest.lock */,
 				8E454CC01B4BC6C500A3B4F8 /* Sources */,
 				8E454CC11B4BC6C500A3B4F8 /* Frameworks */,
 				8E454CC21B4BC6C500A3B4F8 /* Resources */,
+				58222726AED9873D96F635C4 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,6 +287,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		18F322205DA16B1404C7366C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		58222726AED9873D96F635C4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8E454CC01B4BC6C500A3B4F8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -260,6 +329,8 @@
 				8E454CF61B4BCAD000A3B4F8 /* Profile.m in Sources */,
 				8E454CF91B4BCCD400A3B4F8 /* Settings.m in Sources */,
 				8E454CCA1B4BC6C500A3B4F8 /* main.m in Sources */,
+				8EE068491B4E72DE00E891AD /* PlacesTableTableViewController.m in Sources */,
+				8EE068461B4E70C900E891AD /* NewTabBarControler.m in Sources */,
 				8E454CD31B4BC6C500A3B4F8 /* ViewController.m in Sources */,
 				8E454CD01B4BC6C500A3B4F8 /* Places.xcdatamodeld in Sources */,
 			);
@@ -389,6 +460,7 @@
 		};
 		8E454CEB1B4BC6C600A3B4F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48591431872CED701EDB222B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Places/Info.plist;
@@ -399,6 +471,7 @@
 		};
 		8E454CEC1B4BC6C600A3B4F8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 022D777799749547B3AB712F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Places/Info.plist;
@@ -460,6 +533,7 @@
 				8E454CEC1B4BC6C600A3B4F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8E454CED1B4BC6C600A3B4F8 /* Build configuration list for PBXNativeTarget "PlacesTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +542,7 @@
 				8E454CEF1B4BC6C600A3B4F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
