@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
 @property (weak, nonatomic) IBOutlet UITextField *address;
+@property (weak, nonatomic) IBOutlet MKMapView *map;
 
 @end
 
@@ -25,6 +26,10 @@
     _name.text = self.place.name;
     _phoneNumber.text = self.place.phoneNumber;
     _address.text = self.place.formattedAddress;
+    
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(self.place.coordinate, 1*METERS_PER_MILE, 1*METERS_PER_MILE);
+    
+
 }
 
 - (void)didReceiveMemoryWarning {

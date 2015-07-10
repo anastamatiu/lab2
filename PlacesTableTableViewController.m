@@ -9,6 +9,8 @@
 #import "PlacesTableTableViewController.h"
 #import "DetailsViewController.h"
 #import "PlacesTableViewCell.h"
+#import "Position Manager.h"
+
 @import GoogleMaps;
 
 @interface PlacesTableTableViewController ()
@@ -17,6 +19,7 @@
 @property (strong, atomic) NSMutableDictionary *allPlaces;
 @property (strong, nonatomic) NSMutableArray *letterArray;
 @property (strong, nonatomic) GMSPlace *place;
+@property (strong, nonatomic) Position_Manager *positionManager;
 
 @end
 
@@ -24,6 +27,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _positionManager = [Position_Manager sharedInstance];
+    self.positionManager.delegate =self;
+    
      _placesClient = [[GMSPlacesClient alloc] init];
     
     _allPlaces = [[NSMutableDictionary alloc] init];
@@ -34,6 +40,14 @@
     {
         [_letterArray addObject:[NSString stringWithFormat:@"%c", a]];
     }
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    
+    [refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    
+    [self setRefreshControl:refreshControl];
+    
+    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -42,18 +56,36 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    for(NSString *key in _letterArray)
-    {
-        [self placeAutocomplete:key];
-    }
+- (void)refresh {
+    
+    [_positionManager requestLocation];
+  
 }
 
-- (void)placeAutocomplete:(NSString *)key {
+- (void)viewDidAppear:(BOOL)animated
+{
+//    for(NSString *key in _letterArray)
+//    {
+//        [self placeAutocomplete:key];
+//    }
     
-    CLLocationCoordinate2D left = CLLocationCoordinate2DMake(44.437714, 26.070900);
-    CLLocationCoordinate2D right = CLLocationCoordinate2DMake(44.431278, 26.082401);
+    [self.positionManager requestLocation];
+}
+
+- (void)getCurrentLocation:(CLLocation *)currentLocation
+{
+    [self.refreshControl endRefreshing];
+    for(NSString *key in _letterArray)
+            {
+                [self placeAutocompleteWithKey:key andLocation:currentLocation];
+            }
+}
+
+- (void)placeAutocompleteWithKey:(NSString *)key andLocation:(CLLocation *)location{
+
+    
+    CLLocationCoordinate2D left = CLLocationCoordinate2DMake(location.coordinate.latitude - 0.01, location.coordinate.longitude - 0.01);
+    CLLocationCoordinate2D right = CLLocationCoordinate2DMake(location.coordinate.latitude + 0.01, location.coordinate.longitude + 0.01);
     GMSCoordinateBounds *bounds = [[GMSCoordinateBounds alloc] initWithCoordinate:left
                                                                        coordinate:right];
     

@@ -20,6 +20,8 @@
 		8E454CF91B4BCCD400A3B4F8 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E454CF81B4BCCD400A3B4F8 /* Settings.m */; };
 		8EE068461B4E70C900E891AD /* NewTabBarControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE068451B4E70C900E891AD /* NewTabBarControler.m */; };
 		8EE068491B4E72DE00E891AD /* PlacesTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE068481B4E72DE00E891AD /* PlacesTableTableViewController.m */; };
+		A1565F9B1B4FE15800B8CE08 /* Position Manager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1565F9A1B4FE15800B8CE08 /* Position Manager.m */; };
+		A1565F9D1B4FFAC600B8CE08 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1565F9C1B4FFAC600B8CE08 /* MapKit.framework */; };
 		A15F64C91B4FBFA900A2D773 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A15F64C81B4FBFA900A2D773 /* DetailsViewController.m */; };
 		A15F64CF1B4FC75100A2D773 /* PlacesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A15F64CE1B4FC75100A2D773 /* PlacesTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -59,6 +61,9 @@
 		8EE068451B4E70C900E891AD /* NewTabBarControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTabBarControler.m; sourceTree = "<group>"; };
 		8EE068471B4E72DE00E891AD /* PlacesTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesTableTableViewController.h; sourceTree = "<group>"; };
 		8EE068481B4E72DE00E891AD /* PlacesTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacesTableTableViewController.m; sourceTree = "<group>"; };
+		A1565F991B4FE15800B8CE08 /* Position Manager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Position Manager.h"; sourceTree = "<group>"; };
+		A1565F9A1B4FE15800B8CE08 /* Position Manager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Position Manager.m"; sourceTree = "<group>"; };
+		A1565F9C1B4FFAC600B8CE08 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A15F64C71B4FBFA900A2D773 /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		A15F64C81B4FBFA900A2D773 /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		A15F64CD1B4FC75100A2D773 /* PlacesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacesTableViewCell.h; sourceTree = "<group>"; };
@@ -71,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1565F9D1B4FFAC600B8CE08 /* MapKit.framework in Frameworks */,
 				3C35246C9713A56D234CE807 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +194,8 @@
 				A15F64C81B4FBFA900A2D773 /* DetailsViewController.m */,
 				A15F64CD1B4FC75100A2D773 /* PlacesTableViewCell.h */,
 				A15F64CE1B4FC75100A2D773 /* PlacesTableViewCell.m */,
+				A1565F991B4FE15800B8CE08 /* Position Manager.h */,
+				A1565F9A1B4FE15800B8CE08 /* Position Manager.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -195,6 +203,7 @@
 		CA008A00E26FFB2D085A2FD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1565F9C1B4FFAC600B8CE08 /* MapKit.framework */,
 				D32F6FAEC091E4530A081962 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -344,6 +353,7 @@
 				A15F64C91B4FBFA900A2D773 /* DetailsViewController.m in Sources */,
 				A15F64CF1B4FC75100A2D773 /* PlacesTableViewCell.m in Sources */,
 				8E454CD31B4BC6C500A3B4F8 /* ViewController.m in Sources */,
+				A1565F9B1B4FE15800B8CE08 /* Position Manager.m in Sources */,
 				8E454CD01B4BC6C500A3B4F8 /* Places.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "PlacesTableViewCell.h"
+#import "Position Manager.h"
+#import <MapKit/MapKit.h>
 
-@interface PlacesTableTableViewController : UITableViewController
+@interface PlacesTableTableViewController : UITableViewController<LocationProtocol>
 
 @end
