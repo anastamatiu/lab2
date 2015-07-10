@@ -13,6 +13,7 @@
 
 @property (strong, atomic) GMSPlacesClient *placesClient;
 @property (strong, atomic) NSMutableDictionary *allPlaces;
+@property (strong, nonatomic) NSMutableArray *letterArray;
 
 @end
 
@@ -24,6 +25,13 @@
     
     _allPlaces = [[NSMutableDictionary alloc] init];
     
+    _letterArray = [[NSMutableArray alloc] init];
+    
+        for(char a = 'a';a <= 'z';a++)
+    {
+        [_letterArray addObject:[NSString stringWithFormat:@"%c", a]];
+    }
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -33,9 +41,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    for(char a = 'a';a <= 'z';a++)
+    for(NSString *key in _letterArray)
     {
-        [self placeAutocomplete:[NSString stringWithFormat:@"%c", a]];
+        [self placeAutocomplete:key];
     }
 }
 
@@ -73,6 +81,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -100,17 +113,44 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
     }
     
-    NSString *string = [NSString stringWithFormat:@"section %lu, row %lu", indexPath.section, indexPath.row];
+
+    GMSAutocompletePrediction *autocompletePrediction = [[self.allPlaces objectForKey:[self.letterArray objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = string;
-   
+  //  NSString *string = [NSString stringWithFormat:@"section %lu, row %lu", indexPath.section, indexPath.row];
+    
+    cell.textLabel.text = autocompletePrediction.attributedFullText.string;
+    
+    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+     GMSAutocompletePrediction *autocompletePrediction = [[self.allPlaces objectForKey:[self.letterArray objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    
+    NSString *placeID = autocompletePrediction.placeID;
+    
+    [_placesClient lookUpPlaceID:placeID callback:^(GMSPlace *place, NSError *error) {
+        if (error != nil) {
+            NSLog(@"Place Details error %@", [error localizedDescription]);
+            return;
+        }
+        
+        if (place != nil) {
+            NSLog(@"Place name %@", place.name);
+            NSLog(@"Place address %@", place.formattedAddress);
+            NSLog(@"Place placeID %@", place.placeID);
+            NSLog(@"Place attributions %@", place.attributions);
+        } else {
+            NSLog(@"No place details for %@", placeID);
+        }
+    }];
+    
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSString *string = [NSString stringWithFormat:@"Section %lu", section];
-    return string;
+    return [_letterArray objectAtIndex:section];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
