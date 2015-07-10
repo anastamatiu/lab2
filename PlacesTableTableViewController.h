@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PlacesTableViewCell.h"
 
 @interface PlacesTableTableViewController : UITableViewController
 

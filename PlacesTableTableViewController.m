@@ -7,6 +7,8 @@
 //
 
 #import "PlacesTableTableViewController.h"
+#import "DetailsViewController.h"
+#import "PlacesTableViewCell.h"
 @import GoogleMaps;
 
 @interface PlacesTableTableViewController ()
@@ -14,6 +16,7 @@
 @property (strong, atomic) GMSPlacesClient *placesClient;
 @property (strong, atomic) NSMutableDictionary *allPlaces;
 @property (strong, nonatomic) NSMutableArray *letterArray;
+@property (strong, nonatomic) GMSPlace *place;
 
 @end
 
@@ -83,8 +86,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    DetailsViewController *viewController = segue.destinationViewController;
+    viewController.place = self.place;
 }
+
 
 #pragma mark - Table view data source
 
@@ -101,16 +106,15 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *MyIdentifier = @"cellIdentifier";
+- (PlacesTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MyIdentifier];
+    PlacesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:(indexPath.row % 2 == 0) ? @"PlaceEvenCell" : @"PlaceOddCell"];
     
     // Configure the cell...
     
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:MyIdentifier];
+        cell = [[PlacesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:(indexPath.row % 2 == 0) ? @"PlaceEvenCell" : @"PlaceOddCell"];
     }
     
 
@@ -118,8 +122,9 @@
     
   //  NSString *string = [NSString stringWithFormat:@"section %lu, row %lu", indexPath.section, indexPath.row];
     
-    cell.textLabel.text = autocompletePrediction.attributedFullText.string;
+  //  cell.textLabel.text = autocompletePrediction.attributedFullText.string;
     
+    cell.myCell.text = autocompletePrediction.attributedFullText.string;
     
     return cell;
 }
@@ -141,6 +146,8 @@
             NSLog(@"Place address %@", place.formattedAddress);
             NSLog(@"Place placeID %@", place.placeID);
             NSLog(@"Place attributions %@", place.attributions);
+            self.place = place;
+            [self performSegueWithIdentifier:@"showDetails" sender:self];
         } else {
             NSLog(@"No place details for %@", placeID);
         }
